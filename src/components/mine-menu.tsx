@@ -4,7 +4,7 @@ import { MineMenuGame, MineMenuHelp } from "./";
 
 const MineDropDownContainerDiv = styled.div`
   
-  position: absolute;
+  position: relative;
   display: flex;
   height: 20px;
   width: 163px;
