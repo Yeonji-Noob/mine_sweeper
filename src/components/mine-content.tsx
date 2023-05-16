@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import smile from "../assets/smile.png";
+
+
 import flag from "../assets/flag.png";
 import mine from "../assets/mine-ceil.png";
 import question from "../assets/question.png";
@@ -16,8 +18,10 @@ import open7 from "../assets/open7.png";
 import open8 from "../assets/open8.png";
 import empty from "../assets/empty.png";
 
+
+
 import { useState } from "react";
-import { MineCells } from "./";
+import { MineCells, RenderDigits } from "./";
 import { OpenBehaviorExtend } from './mine-type';
 
 const MineContentContainer = styled.div`
@@ -85,13 +89,9 @@ const MineContentContainer = styled.div`
 
 `;
 
-// .mine__content__inner 안에 넣어야 함
-/* grid-template-columns: repeat(${({ columns }) => columns}, 16px);
-grid-template-rows: repeat(${({ rows }) => rows}, 16px); */
 
 
 export const MineContents = () => {
-
 
 
   return (
@@ -105,6 +105,8 @@ export const MineContents = () => {
       >
 
         <div className="mine__score-bar">
+
+          {/* 왼쪽 지뢰 스코어 */}
           <div className="mine__digits__outer" >
             {/* {renderDigits(remainMines())}  */}
           </div>
@@ -124,7 +126,9 @@ export const MineContents = () => {
 
           </div>
 
+          {/* 시간 표시 */}
           <div className="mine__digits__outer" >
+            <RenderDigits></RenderDigits>
             {/* {renderDigits(seconds)} */}
           </div>
         </div>
@@ -136,4 +140,5 @@ export const MineContents = () => {
     </MineContentContainer>
 
   );
+
 }
