@@ -17,3 +17,8 @@ export type DropdownType = {
 export type ExtractedDropdownGame = Pick<DropdownType, "dropdownGame" | "dropdownOpen">;
 
 export type ExtractedDropdownHelp = Pick<DropdownType, "dropdownHelp" | "dropdownOpen">;
+
+
+// export type DigitsNum = {
+//   num: number
+// }

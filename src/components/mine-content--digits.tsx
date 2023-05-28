@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import digit0 from "../assets/digit0.png";
 import digit1 from "../assets/digit1.png";
 import digit2 from "../assets/digit2.png";
@@ -8,11 +10,10 @@ import digit6 from "../assets/digit6.png";
 import digit7 from "../assets/digit7.png";
 import digit8 from "../assets/digit8.png";
 import digit9 from "../assets/digit9.png";
-import digit_ from "../assets/digit-.png";
+// import digit_ from "../assets/digit-.png";
 
 
-
-export const RenderDigits = (number) => {
+export const RenderDigits: React.FC = () => {
 
   const digits = [
     digit0,
@@ -27,36 +28,41 @@ export const RenderDigits = (number) => {
     digit9,
   ];
 
+  const [digit, setDigit] = useState<number>(0);
 
-  let numberStr;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDigit((prevDigit) => {
+        const nextDigit = prevDigit + 1;
+        return nextDigit > 999 ? prevDigit : nextDigit;
+      });
+    }, 1000);
 
-  if (number < 0) {
-    const _number = -number % 100;
-    if (_number === 0) {
-      numberStr = '00';
-    } else if (_number < 10) {
-      numberStr = '0' + _number;
-    } else {
-      numberStr = String(_number);
-    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
-
-
-
-
-
-    return (
-      <>
-
-        <img src={digit_} alt="-" />
-        {numberStr.split('').map((n, i) => (
-          <img src={digits[i]} key={i} alt={n} />
-        ))}
-
-      </>
-    );
+  const digit100 = Math.floor(digit / 100);
+  const digit10 = Math.floor((digit % 100) / 10);
+  const digit01 = digit % 10;
 
 
-  }
+  const digit100Src = digits[digit100];
+  const digit10Src = digits[digit10];
+  const digit01Src = digits[digit01];
+
+  return (
+    <>
+
+      <img src={digit100Src} alt="100" />
+      <img src={digit10Src} alt="10" />
+      <img src={digit01Src} alt="1" />
+
+    </>
+  );
+
+
+
 
 }

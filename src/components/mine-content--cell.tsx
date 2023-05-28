@@ -1,4 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { ClickCell } from "./";
+
 
 
 const CellsContainer = styled.div`
@@ -25,8 +28,16 @@ const CellsContainer = styled.div`
     border-width: 2px;
     border-style: solid;
     border-color: rgb(245, 245, 245) rgb(128, 128, 128) rgb(128, 128, 128) rgb(245, 245, 245);
+    
+  
   }
 
+  & .active {
+    border: 1px solid rgb(128, 128, 128);
+    border-left: 0px;
+    width: 15px;
+    height: 15px;
+  }
   }
 
 
@@ -34,11 +45,20 @@ const CellsContainer = styled.div`
 `;
 
 
-export const MineCells = (
-  // { cells, onMouseDownCells, onMouseOverCells }
-) => {
+export const MineCells = () => {
 
   const numbers = [...Array(81)].map((_, index) => index + 1);
+
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
+
+  const handleMouseDown = () => {
+    setIsMouseDown(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsMouseDown(false);
+  };
 
   return (
     <CellsContainer>
@@ -53,7 +73,7 @@ export const MineCells = (
         {numbers.map((key, index) => {
           return (
             <div className="mine__cell" key={key} id={`${index}`}>
-              <div className="mine-cell_box"></div>
+              <ClickCell />
             </div>
           );
         })}

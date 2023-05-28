@@ -21,7 +21,7 @@ import empty from "../assets/empty.png";
 
 
 import { useState } from "react";
-import { MineCells, RenderDigits } from "./";
+import { MineCells, RenderDigits, LeftDigits } from "./";
 import { OpenBehaviorExtend } from './mine-type';
 
 const MineContentContainer = styled.div`
@@ -65,6 +65,8 @@ const MineContentContainer = styled.div`
   transform: translateX(1px);
 }
 
+
+/* :) 얼굴 */
 .mine__face {
   border-radius: 2px;
   height: 100%;
@@ -77,13 +79,16 @@ const MineContentContainer = styled.div`
   border-style: solid;
   border-color: rgb(245, 245, 245) rgb(128, 128, 128) rgb(128, 128, 128)rgb(245, 245, 245);
   outline: none;
+
+  /* :)를 누르면 보이는 부분 */
     &:active:hover {
     border-width: 1px;
     border-color: rgb(128, 128, 128);
     img {transform: translate(1px, 1px);}
-    img:nth-child(1) {display: none;}
+    img:nth-child(1) {display: block;}
     img:nth-child(2) {display: block;}
     }
+    
     img:nth-child(2) {display: none;}
 }
 
@@ -108,7 +113,7 @@ export const MineContents = () => {
 
           {/* 왼쪽 지뢰 스코어 */}
           <div className="mine__digits__outer" >
-            {/* {renderDigits(remainMines())}  */}
+            <LeftDigits />
           </div>
 
 
@@ -128,7 +133,7 @@ export const MineContents = () => {
 
           {/* 시간 표시 */}
           <div className="mine__digits__outer" >
-            <RenderDigits></RenderDigits>
+            <RenderDigits />
             {/* {renderDigits(seconds)} */}
           </div>
         </div>
