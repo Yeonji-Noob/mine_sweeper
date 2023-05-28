@@ -29,7 +29,6 @@ const CellsContainer = styled.div`
     border-style: solid;
     border-color: rgb(245, 245, 245) rgb(128, 128, 128) rgb(128, 128, 128) rgb(245, 245, 245);
     
-  
   }
 
   & .active {
@@ -38,6 +37,13 @@ const CellsContainer = styled.div`
     width: 15px;
     height: 15px;
   }
+
+  .cell-flag {
+    position: absolute;
+    right: -2px;
+    top: -2px;
+  }
+
   }
 
 

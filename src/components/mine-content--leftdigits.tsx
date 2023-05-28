@@ -30,7 +30,7 @@ export const LeftDigits = () => {
     <>
 
       <img src={digit0} alt="100" />
-      <img src={digit0} alt="10" />
+      <img src={digit1} alt="10" />
       <img src={digit0} alt="1" />
 
     </>
