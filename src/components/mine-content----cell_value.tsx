@@ -23,7 +23,7 @@ export const CellValue = ({ isMouseDown }: { isMouseDown: boolean }) => {
 
   return (
     <>
-      <img src={open1} alt="value" style={{ display: isMouseDown ? 'block' : 'none' }} className="cell-push-center" />
+      {/* <img src={open1} alt="value" style={{ display: isMouseDown ? 'block' : 'none' }} className="cell-push-center" /> */}
     </>
   );
 } 
