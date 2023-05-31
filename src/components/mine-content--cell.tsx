@@ -1,9 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ClickCell } from "./";
 
 
+// interface Cell {
+//   value: number;
+//   isMine: boolean;
+// }
 
+
+
+export const MineCells: React.FC = () => {
+
+
+  const boardSize = 9; // 보드 크기
+
+  //숫자 배열 9*9 생성하기
+  const numbers: number[] = Array.from({ length: boardSize * boardSize }, (_, index) => index + 1);
+
+
+  return (
+    <CellsContainer>
+      <div className="mine__content__inner">
+        {numbers.map(index => (
+          <div className="mine__cell" key={index} id={`${index}`}>
+            <ClickCell />
+          </div>
+        ))}
+      </div>
+    </CellsContainer>
+  );
+}
+
+
+
+// styled-components
 const CellsContainer = styled.div`
 
   .mine__content__inner {
@@ -36,9 +67,15 @@ const CellsContainer = styled.div`
     border-left: 0px;
     width: 15px;
     height: 15px;
+
+    .cell-push-center {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
   }
 
-  .cell-flag {
+  .cell-center {
     position: absolute;
     right: -2px;
     top: -2px;
@@ -49,43 +86,3 @@ const CellsContainer = styled.div`
 
 
 `;
-
-
-export const MineCells = () => {
-
-  const numbers = [...Array(81)].map((_, index) => index + 1);
-
-  const [isMouseDown, setIsMouseDown] = useState(false);
-
-
-  const handleMouseDown = () => {
-    setIsMouseDown(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsMouseDown(false);
-  };
-
-  return (
-    <CellsContainer>
-      <div className="mine__content__inner"
-      // onTouchEnd={onTouchEndCeils} onMouseUp={onMouseUpCeils} 
-      >
-        {/* <Cells
-        // cells={cells} 
-        // onMouseDown={onMouseDownCells} 
-        // onMouseEnter={onMouseOverCells} 
-        /> */}
-        {numbers.map((key, index) => {
-          return (
-            <div className="mine__cell" key={key} id={`${index}`}>
-              <ClickCell />
-            </div>
-          );
-        })}
-
-
-      </div>
-    </CellsContainer>
-  );
-}

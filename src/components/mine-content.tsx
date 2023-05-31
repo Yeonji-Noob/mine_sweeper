@@ -2,9 +2,9 @@ import styled from "styled-components";
 import smile from "../assets/smile.png";
 
 
-import flag from "../assets/flag.png";
 import mine from "../assets/mine-ceil.png";
 import question from "../assets/question.png";
+
 import mineDeath from "../assets/mine-death.png";
 import misFlagged from "../assets/misflagged.png";
 

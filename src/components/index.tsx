@@ -6,4 +6,7 @@ export { MineMenuHelp } from "./mine-menu--help";
 export { MineCells } from "./mine-content--cell";
 export { RenderDigits } from "./mine-content--digits";
 export { LeftDigits } from "./mine-content--leftdigits";
+
+
 export { ClickCell } from "./mine-content---cell_click";
+export { CellValue } from "./mine-content----cell_value";

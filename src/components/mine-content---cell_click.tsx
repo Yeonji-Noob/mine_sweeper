@@ -1,8 +1,19 @@
 import { useState } from "react";
+import { CellValue } from "./";
+
 import flag from '../assets/flag.png';
 import question from '../assets/question.png';
 
 import { MouseEvent } from "react";
+
+// interface ClickCellProps {
+//   value: number;
+//   isMine: boolean;
+// }
+
+export interface MouseDown {
+  isMouseDown: boolean;
+}
 
 export const ClickCell: React.FC = () => {
 
@@ -15,25 +26,26 @@ export const ClickCell: React.FC = () => {
     setIsRightClick((prevCount) => (prevCount + 1) % 3);
   }
 
+  // 깃발, 물음표
   const getImageSrc = () => {
     if (isRightClick === 0 || isRightClick === 1 || isRightClick === 2) {
       return imgName[isRightClick];
     }
   };
-
   // console.log(isRightClick);
+
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (e.button === 0) setIsMouseDown(true);
     else e.preventDefault();
   };
-
 
   return (
     <div className={`mine-cell_box ${isMouseDown ? 'active' : ''}`}
       onMouseDown={handleMouseDown}
       onContextMenu={RightHandleMouseDown}
     >
-      <img src={getImageSrc()} className="cell-flag" alt="flag" style={{ display: isRightClick < 1 ? 'none' : 'block' }} />
+      <img src={getImageSrc()} className="cell-center" alt="flag" style={{ display: isRightClick < 1 ? 'none' : 'block' }} />
+      <CellValue isMouseDown={isMouseDown} />
     </div>
   );
 }
