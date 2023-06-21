@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
 
 import digit0 from "../assets/digit0.png";
 import digit1 from "../assets/digit1.png";
@@ -53,16 +54,18 @@ export const RenderDigits: React.FC = () => {
   const digit01Src = digits[digit01];
 
   return (
-    <>
-
+    <DigitsTime>
       <img src={digit100Src} alt="100" />
       <img src={digit10Src} alt="10" />
       <img src={digit01Src} alt="1" />
+    </DigitsTime>
 
-    </>
   );
 
 
-
-
 }
+
+const DigitsTime = styled.div`
+position: absolute;
+inset: 0;
+`;

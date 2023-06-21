@@ -9,4 +9,3 @@ export { LeftDigits } from "./mine-content--leftdigits";
 
 
 export { ClickCell } from "./mine-content---cell_click";
-export { CellValue } from "./mine-content----cell_value";

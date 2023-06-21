@@ -41,37 +41,12 @@ export const MineCells: React.FC = () => {
   for (let r = 0; r < row; r++) {
     for (let c = 0; c < column; c++) {
       if (gameBoard[r][c] === 1) {
-        // 현재 위치에 지뢰가 있을 경우
         for (let i = r - 1; i <= r + 1; i++) {
           for (let j = c - 1; j <= c + 1; j++) {
             if (i >= 0 && i < row && j >= 0 && j < column && gameBoard[i][j] !== 1) {
-              // 범위 내에 있고 지뢰가 아닌 경우
-              if (gameBoard[i][j] === 2) {
-                // 이미 2인 경우
-                gameBoard[i][j] = 3;
-              } else if (gameBoard[i][j] === 3) {
-                // 이미 3인 경우
-                gameBoard[i][j] = 4;
-              } else if (gameBoard[i][j] === 4) {
-                // 이미 4인 경우
-                gameBoard[i][j] = 5;
-              } else if (gameBoard[i][j] === 5) {
-                // 이미 5인 경우
-                gameBoard[i][j] = 6;
-              } else if (gameBoard[i][j] === 6) {
-                // 이미 6인 경우
-                gameBoard[i][j] = 7;
-              } else if (gameBoard[i][j] === 7) {
-                // 이미 7인 경우
-                gameBoard[i][j] = 8;
-              } else if (gameBoard[i][j] === 8) {
-                // 이미 8인 경우
-                gameBoard[i][j] = 9;
-              } else if (gameBoard[i][j] === 9) {
-                // 이미 9인 경우
-                gameBoard[i][j] = 10;
+              if (gameBoard[i][j] >= 2 && gameBoard[i][j] < 10) {
+                gameBoard[i][j]++;
               } else if (gameBoard[i][j] === 10) {
-                // 이미 10인 경우
                 gameBoard[i][j] = 11;
               } else {
                 gameBoard[i][j] = 2;
@@ -83,17 +58,18 @@ export const MineCells: React.FC = () => {
     }
   }
 
+  const handleImgClick = (event: React.MouseEvent<HTMLImageElement>) => {
+    // 클릭한 부분 보이기
+    const target = event.target as HTMLImageElement;
+    target.style.display = 'block';
+  };
 
   console.log(gameBoard);
 
   return (
     <CellsContainer>
-      <div className="mine__content__inner">
-        {/* {numbers.map(index => (
-          <div className="mine__cell" key={index} id={`${index}`}>
-            <ClickCell />
-          </div>
-        ))} */}
+      <div className="mine__content__inner" onClick={handleImgClick}>
+
         {gameBoard.map((row, rowIndex) =>
           row.map((cell, columnIndex) => (
             <div
@@ -144,7 +120,7 @@ const CellsContainer = styled.div`
     border-width: 2px;
     border-style: solid;
     border-color: rgb(245, 245, 245) rgb(128, 128, 128) rgb(128, 128, 128) rgb(245, 245, 245);
-    z-index: 99;
+    z-index: 98;
   }
 
   & .active {
@@ -163,9 +139,10 @@ const CellsContainer = styled.div`
 
   .cell-img {
       position: absolute;
+      display: block;
       right: 0px;
       top: 0px;
-      z-index: 90;
+      z-index: 1;
     }
 
   .cell-center {

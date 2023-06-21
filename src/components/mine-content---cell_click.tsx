@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CellValue } from "./";
 
 import flag from '../assets/flag.png';
 import question from '../assets/question.png';
@@ -45,7 +44,6 @@ export const ClickCell: React.FC = () => {
       onContextMenu={RightHandleMouseDown}
     >
       <img src={getImageSrc()} className="cell-center" alt="flag" style={{ display: isRightClick < 1 ? 'none' : 'block' }} />
-      <CellValue isMouseDown={isMouseDown} />
     </div>
   );
 }

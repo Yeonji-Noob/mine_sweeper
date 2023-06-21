@@ -9,7 +9,7 @@ export const MenuContainer = styled.div`
 
 .mine-drop_down {
   position: relative;
-  z-index: 1;
+  z-index: 99;
 }
 
   /* title(game) 부분 */

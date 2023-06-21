@@ -17,7 +17,7 @@ import open6 from "../assets/open6.png";
 import open7 from "../assets/open7.png";
 import open8 from "../assets/open8.png";
 import empty from "../assets/empty.png";
-
+import digit0 from "../assets/digit0.png";
 
 
 import { useState } from "react";
@@ -48,6 +48,7 @@ const MineContentContainer = styled.div`
 }
 
 .mine__digits__outer {
+  position: relative;
   width: 40px;
   height: 24px;
   border-width: 0 1px 1px 0;
@@ -98,6 +99,16 @@ const MineContentContainer = styled.div`
 
 export const MineContents = () => {
 
+  const [isFaceClicked, setIsFaceClicked] = useState<boolean>(false);
+  const [refreshCounter, setRefreshCounter] = useState<number>(0);
+
+  const handleFaceClick = () => {
+    setRefreshCounter(refreshCounter + 1);
+  };
+
+  const handleRenderDigitsClick = () => {
+    setRefreshCounter(refreshCounter + 1);
+  };
 
   return (
 
@@ -120,11 +131,7 @@ export const MineContents = () => {
 
           <div className="mine__face__outer" >
 
-            <button
-              // ref={face} 
-              className="mine__face"
-            // onClick={() => onReset()} 
-            >
+            <button className="mine__face" onClick={handleFaceClick}>
               {/* {statusFace()} */}
               <img alt="smile" src={smile} />
             </button>
@@ -132,8 +139,11 @@ export const MineContents = () => {
           </div>
 
           {/* 시간 표시 */}
-          <div className="mine__digits__outer" >
-            <RenderDigits />
+          <div className="mine__digits__outer" onClick={handleRenderDigitsClick} >
+            <img src={digit0} alt="0" />
+            <img src={digit0} alt="0" />
+            <img src={digit0} alt="0" />
+            {isFaceClicked && <RenderDigits key={refreshCounter} />}
             {/* {renderDigits(seconds)} */}
           </div>
         </div>
