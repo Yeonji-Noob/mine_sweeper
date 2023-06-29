@@ -143,7 +143,7 @@ export const MineContents = () => {
             <img src={digit0} alt="0" />
             <img src={digit0} alt="0" />
             <img src={digit0} alt="0" />
-            {isFaceClicked && <RenderDigits key={refreshCounter} />}
+            {<RenderDigits key={refreshCounter} />}
             {/* {renderDigits(seconds)} */}
           </div>
         </div>

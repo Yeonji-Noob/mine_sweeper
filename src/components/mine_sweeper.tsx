@@ -36,10 +36,7 @@ export const MineSweeper = () => {
 
   return (
     // 전체를 감싸는 div
-    <MineSweeperContainer
-    // className={className} 
-    // onContextMenu={e => e.preventDefault()} 
-    >
+    <MineSweeperContainer>
 
       {/* dropdown 메뉴 */}
       <MineMenu></MineMenu>

@@ -67,5 +67,6 @@ export const RenderDigits: React.FC = () => {
 
 const DigitsTime = styled.div`
 position: absolute;
+display: block;
 inset: 0;
 `;

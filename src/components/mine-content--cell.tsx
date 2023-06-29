@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { ClickCell } from "./";
 import mine from "../assets/mine-ceil.png";
+import mineDeath from '../assets/mine-death.png';
 import open1 from "../assets/open1.png";
 import open2 from "../assets/open2.png";
 import open3 from "../assets/open3.png";
@@ -66,9 +67,13 @@ export const MineCells: React.FC = () => {
 
   console.log(gameBoard);
 
+
+  const mineClick = [mine, mineDeath];
+
   return (
     <CellsContainer>
-      <div className="mine__content__inner" onClick={handleImgClick}>
+      <div className="mine__content__inner"
+        onClick={handleImgClick}>
 
         {gameBoard.map((row, rowIndex) =>
           row.map((cell, columnIndex) => (
@@ -78,7 +83,7 @@ export const MineCells: React.FC = () => {
               id={`${columnIndex + rowIndex * column}`}
             >
               <ClickCell />
-              {cell === 1 ? <img src={mine} className="cell-img" alt="mine" /> : ''}
+              {cell === 1 ? <img src={mineClick[0]} className="cell-img" alt="mine" /> : ''}
               {cell === 2 ? <img src={open1} className="cell-img" alt="mine" /> : ''}
               {cell === 3 ? <img src={open2} className="cell-img" alt="mine" /> : ''}
               {cell === 4 ? <img src={open3} className="cell-img" alt="mine" /> : ''}
@@ -99,7 +104,8 @@ export const MineCells: React.FC = () => {
 const CellsContainer = styled.div`
 
   .mine__content__inner {
-    display: grid;
+    display: grid !important;
+    /* grid가 block으로 바뀌는 경우가 있어서 고정시켜뒀음 */
     grid-template-columns: repeat(9, 16px);
     grid-template-rows: repeat(9, 16px);
     border-width: 3px;
@@ -144,6 +150,10 @@ const CellsContainer = styled.div`
       top: 0px;
       z-index: 1;
     }
+
+  .cell-mineDeath {
+    background-image: url('../assets/mine-death.png');
+  }
 
   .cell-center {
     position: absolute;
