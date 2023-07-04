@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { ClickCell } from "./";
 import mine from "../assets/mine-ceil.png";
@@ -11,10 +11,10 @@ import open5 from "../assets/open5.png";
 import open6 from "../assets/open6.png";
 import open7 from "../assets/open7.png";
 import open8 from "../assets/open8.png";
+import rectangle from "../assets/Rectangle.png";
 
 
 export const MineCells: React.FC = () => {
-
 
   const row = 9; // 보드의 행 크기
   const column = 9; // 보드의 열 크기
@@ -59,21 +59,16 @@ export const MineCells: React.FC = () => {
     }
   }
 
-  const handleImgClick = (event: React.MouseEvent<HTMLImageElement>) => {
-    // 클릭한 부분 보이기
-    const target = event.target as HTMLImageElement;
-    target.style.display = 'block';
-  };
 
   console.log(gameBoard);
 
 
   const mineClick = [mine, mineDeath];
 
+
   return (
     <CellsContainer>
-      <div className="mine__content__inner"
-        onClick={handleImgClick}>
+      <div className="mine__content__inner" >
 
         {gameBoard.map((row, rowIndex) =>
           row.map((cell, columnIndex) => (
@@ -89,7 +84,6 @@ export const MineCells: React.FC = () => {
               {cell === 4 ? <img src={open3} className="cell-img" alt="mine" /> : ''}
               {cell === 5 ? <img src={open4} className="cell-img" alt="mine" /> : ''}
               {cell === 6 ? <img src={open5} className="cell-img" alt="mine" /> : ''}
-
             </div>
           ))
         )}
@@ -119,6 +113,18 @@ const CellsContainer = styled.div`
   width: 16px;
   height: 16px;
 
+  .mine-cells {
+    position: relative;
+    z-index: 2;
+
+  }
+  .cell-rectangle{
+      display: block;    
+      width: 12px;
+      height: 12px;
+      position: relative;
+  }
+
   & .mine-cell_box {
     position: absolute;
     width: 12px;
@@ -145,7 +151,7 @@ const CellsContainer = styled.div`
 
   .cell-img {
       position: absolute;
-      display: block;
+      /* display: block; */
       right: 0px;
       top: 0px;
       z-index: 1;

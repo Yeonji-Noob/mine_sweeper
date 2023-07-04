@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import flag from '../assets/flag.png';
 import question from '../assets/question.png';
+import rectangle from "../assets/Rectangle.png";
 
 import { MouseEvent } from "react";
 
@@ -44,6 +45,7 @@ export const ClickCell: React.FC = () => {
       onContextMenu={RightHandleMouseDown}
     >
       <img src={getImageSrc()} className="cell-center" alt="flag" style={{ display: isRightClick < 1 ? 'none' : 'block' }} />
+      <img src={rectangle} className="cell-rectangle" alt="cell" style={{ display: isMouseDown ? 'none' : 'block' }} />
     </div>
   );
 }
